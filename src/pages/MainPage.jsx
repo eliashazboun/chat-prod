@@ -54,6 +54,7 @@ const MainPage = () => {
   const postTextAreaRef = useRef(null);
 
   const { user, collectionDB, autoUsers, admin } = location.state;
+  console.log("🚀 ~ file: MainPage.jsx:57 ~ MainPage ~ user, collectionDB:", user, collectionDB)
   const dispatch = useDispatch();
 
   const [posts, setPosts] = useState([]);
@@ -106,16 +107,25 @@ const MainPage = () => {
     }
   };
 
-  const handleListClick = (name) => {
-    const user = autoUsers.find((item) => item.display === name);
+  const handleListClick = async (name) => {
+    let user;
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("nameLower", "==", strip(name).toLowerCase()));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+       user = doc.data();
+    });
+
+    console.log(user)
     navigate("/main", {
       state: {
-        collectionDB: user.admin ? collectionDB : "otherPosts",
-        user: name,
-        admin: user.admin,
+        collectionDB: user.admin ? "posts" : "otherPosts",
+        user: user,
         autoUsers: autoUsers,
       },
     });
+    window.location.reload();
   };
 
   const handleSubmit = async (e) => {
