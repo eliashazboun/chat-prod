@@ -1,0 +1,59 @@
+.post-tiptap code {
+  background-color: rgba(#616161, 0.1);
+  color: #616161;
+}
+
+.post-tiptap pre {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+.post-tiptap code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.8rem;
+}
+
+.post-tiptap img {
+  max-width: 100%;
+  height: auto;
+}
+
+.post-tiptap blockquote {
+  padding-left: 1rem;
+  border-left: 3px solid #999999;
+}
+
+.post-tiptap hr {
+  border: none;
+  border-top: 3px solid #999999;
+  margin: 2rem 0;
+}
+
+.post-tiptap {
+  padding: 10px;
+  border: 1px solid grey;
+  background: white;
+  border-radius: 5px;
+  min-height: 100px;
+}
+.post-tiptap:focus {
+  border-color: black;
+}
+
+.post-tiptap > * + * {
+  margin-top: 0.75em;
+}
+
+.post-tiptap ul,
+.post-tiptap ol {
+  padding: 0 2rem;
+  list-style: inside;
+}
+.post-tiptap ul p{
+  padding-left: 20px;
+  transform: translateY(-21px);
+}
