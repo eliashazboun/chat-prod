@@ -168,6 +168,7 @@ const MainPage = () => {
 
       setTitle("");
       editor.commands.clearContent(true);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
